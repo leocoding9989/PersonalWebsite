@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <style>
+            h1{
+                /* height: 45vh; */
+                margin:0;
+                font-size: 40vh;
+                text-align: center;
+                
+
+            }
+            .Counters{
+                display:flex;
+                /* height: 50vh;
+                width: 100vw; */
+                margin: 0;
+                padding: 0;
+                
+            }
+            .buttoncssclass{
+                height: 100%;
+                width: 33.33%;
+                font-size: 40vh;
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                display:flex;
+                flex-direction: column;
+                height: 100vh;
+                width: 100vw;
+                margin:0;
+                padding:0;
+            }
+            #numberinput{
+                /* width:100vw;
+                height:5vh; */
+                flex-grow: 1;
+                margin: 0;
+                padding: 0;
+                
+
+            }
+            
+        </style>
+        <!-- <script src="./script.js"></script> --> 
+        <script>
+            
+            let counternum = 0;
+            function setcounterhtml(num) {
+                document.getElementById("counterdisplay").innerHTML = num;
+            }
+            console.log("so");
+            document.addEventListener("DOMContentLoaded", (event) => {
+                const buttonplus = document.getElementById("buttonplus");
+                const buttonminus = document.getElementById("buttonminus");
+                const numberinput = document.getElementById("numberinput");
+                const buttonmultiply = document.getElementById("buttonmultiply");
+                buttonplus.addEventListener("click", (ev) => {
+                    let inputnum = parseFloat(numberinput.value);
+                    
+                    if (numberinput.value !== "" && !isNaN(inputnum)) {
+                        counternum += inputnum;
+                        setcounterhtml(counternum);
+                    }   
+                });
+
+                buttonminus.addEventListener("click", (ev) => {
+                    let inputnum = parseFloat(numberinput.value);
+                    if (numberinput.value !== "" && !isNaN(inputnum)) {
+                        counternum -= inputnum;
+                        setcounterhtml(counternum);
+                    }
+                });
+                
+                buttonmultiply.addEventListener("click", (ev) => {
+                    let inputnum = parseFloat(numberinput.value);
+                    if (numberinput.value !== "" && !isNaN(inputnum)) {
+                        counternum *= inputnum;
+                        setcounterhtml(counternum);
+
+                    }
+                });
+                
+
+            });
+        </script>
+    
+    </head>
+
+    <body>
+        <h1 id="counterdisplay">
+            0
+        </h1>
+        <input id="numberinput" type="number" value="0">
+   
+
+        <div class="Counters">
+            <button id="buttonminus" class="buttoncssclass">-</button>
+            <button id="buttonplus" class="buttoncssclass">+</button>
+            <button id="buttonmultiply" class="buttoncssclass">x</button>
+        </div>
+    </body>
+
+    
+</html>
