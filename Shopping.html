@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        .checkboxcss{
+            display:flex;
+            flex-direction: row;
+            
+        }
+        .hidden{
+            display:none
+        }
+    </style>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const clearbutton = document.getElementById("clear");
+            const filterbutton = document.getElementById("filter");
+            const shoppinglist = document.getElementById("shoppinglist");
+            const iteminput = document.getElementById("iteminput");
+            const addbutton = document.getElementById("add");
+            addbutton.addEventListener("click", () => {
+
+                let name = iteminput.value;
+                if (name === "") {
+                    return;
+                }
+                
+                let itemdiv = document.createElement("div");
+                itemdiv.classList.add("checkboxcss");
+                let makecheckbox = document.createElement("input");
+                makecheckbox.type = "checkbox";
+                let text = document.createElement("p");
+                text.innerHTML = name;
+                itemdiv.appendChild(makecheckbox);
+                itemdiv.appendChild(text);
+                shoppinglist.appendChild(itemdiv);
+            });
+    
+            clearbutton.addEventListener("click", () => {
+            let items = shoppinglist.querySelectorAll("div");            
+            items.forEach((item) => {
+                    let makecheckbox = item.querySelector("input");
+                    if (makecheckbox.checked) {
+                        item.remove();
+                    }
+                });
+            });
+
+
+            filterbutton.addEventListener("click", () => {
+                let allitems = shoppinglist.querySelectorAll("div")
+                if (filterbutton.innerHTML == "Show: ALL") {
+                    filterbutton.innerHTML = "Show: Completed";
+                    allitems.forEach((item) => {
+                        item.classList.remove("hidden");
+                        let checkbox = item.querySelector("input");
+                        if  (! checkbox.checked) {
+                            item.classList.add("hidden");
+                        };
+                    });
+
+                } else if (filterbutton.innerHTML == "Show: Completed") {
+                    filterbutton.innerHTML = "Show: Uncompleted";
+                    allitems.forEach((item) => {
+                        item.classList.remove("hidden");
+                        let checkbox = item.querySelector("input");
+                        if  (checkbox.checked) {
+                            item.classList.add("hidden");
+                        };
+                    });
+                } else if (filterbutton.innerHTML == "Show: Uncompleted") {
+                    filterbutton.innerHTML = "Show: ALL";
+                    allitems.forEach((item) => {
+                        item.classList.remove("hidden");
+                        let checkbox = item.querySelector("input");
+                    });
+                };
+
+            });
+
+       });
+
+
+        
+    </script>
+</head>
+
+<body >
+    <h1>Shopping List</h1>
+
+    <button id="clear">Clear Completed</button>
+    <button id="filter">Show: ALL</button>
+
+    <div id="shoppinglist">
+        <div class="checkboxcss">
+            <input type="checkbox">
+            <p>Apples</p>
+
+        </div>
+    </div>
+
+    <input id="iteminput" type="text">
+    <button id="add">Add Item</button>
+
+</body>
+</html>

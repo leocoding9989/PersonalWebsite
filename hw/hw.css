@@ -1,0 +1,31 @@
+
+:root {
+        --fruit-color: gainsboro;
+}
+h1 {
+    color: var(--fruit-color);
+}
+
+.fruits {
+    color :red;
+}
+
+@media (max-width: 500px) {
+    #apple {
+        color :greenyellow
+    }
+}
+
+.fruit {
+    background-color: var(--fruit-color);
+    padding: 10px;
+    margin: 5px;
+}
+
+.fruit {
+background-color: var(--fruit-color);
+    padding: 10px;
+    margin: 5px;
+}
+
+
