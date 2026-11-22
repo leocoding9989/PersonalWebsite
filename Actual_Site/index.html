@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Personal Website</title>
   <link rel="stylesheet" href="styles.css">
+  <script src="navigation.js" defer></script>
 </head>
 <body>
   <header class="site-header">
@@ -14,28 +15,28 @@
   <div class="site-layout">
     <nav class="section-nav" aria-label="Page sections">
       <ul>
-        <li><a href="https://google.com">Intro</a></li>
-        <li><a href="#about">About Me</a></li>
-        <li><a href="#projects">Projects</a></li>
-        <li><a href="#strengths">Strengths</a></li>
-        <li><a href="#credentials">Awards &amp; Education</a></li>
-        <li><a href="#contact">Contact</a></li>
+        <li><a href="#intro"><span>Intro</span></a></li>
+        <li><a href="#about"><span>About Me</span></a></li>
+        <li><a href="#projects"><span>Projects</span></a></li>
+        <li><a href="#strengths"><span>Strengths</span></a></li>
+        <li><a href="#credentials"><span>Awards &amp; Education</span></a></li>
+        <li><a href="#contact"><span>Contact</span></a></li>
       </ul>
     </nav>
 
     <main>
-      <section class="panel" id="intro" aria-labelledby="intro-heading">
+      <section class="panel" id="intro" aria-labelledby="intro-heading" tabindex="-1">
         <h1 id="intro-heading">Your Name</h1>
         <p class="photo-placeholder">Optional photo</p>
         <p class="card">Add a sentence about who you are. Add a second sentence about what you do or what interests you.</p>
       </section>
 
-      <section class="panel" id="about" aria-labelledby="about-heading">
+      <section class="panel" id="about" aria-labelledby="about-heading" tabindex="-1">
         <h2 id="about-heading">About Me</h2>
         <p>Add a short bio about your background and interests.</p>
       </section>
 
-      <section class="panel" id="projects" aria-labelledby="projects-heading">
+      <section class="panel" id="projects" aria-labelledby="projects-heading" tabindex="-1">
         <h2 id="projects-heading">Projects</h2>
         <div class="project-cards" role="region" aria-label="Project cards" tabindex="0">
           <article class="card">
@@ -65,7 +66,7 @@
         </div>
       </section>
 
-      <section class="panel" id="strengths" aria-labelledby="strengths-heading">
+      <section class="panel" id="strengths" aria-labelledby="strengths-heading" tabindex="-1">
         <h2 id="strengths-heading">Strengths</h2>
         <ul class="strengths-list" role="list">
           <li class="card">Strength 1</li>
@@ -74,7 +75,7 @@
         </ul>
       </section>
 
-      <section class="panel" id="credentials" aria-labelledby="credentials-heading">
+      <section class="panel" id="credentials" aria-labelledby="credentials-heading" tabindex="-1">
         <h2 id="credentials-heading">Awards, Diplomas, and Education</h2>
         <div class="card-grid">
           <article class="card">
@@ -92,7 +93,7 @@
         </div>
       </section>
 
-      <section class="panel" id="contact" aria-labelledby="contact-heading">
+      <section class="panel" id="contact" aria-labelledby="contact-heading" tabindex="-1">
         <h2 id="contact-heading">Contact</h2>
         <div class="card-grid">
           <div class="card">

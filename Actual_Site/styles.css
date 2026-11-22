@@ -157,7 +157,137 @@ main {
     flex-direction: column;
   }
 
+  .section-nav--wheel {
+    --wheel-transition: transform 360ms ease-in-out;
+    position: sticky;
+    top: 1rem;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  .section-nav--wheel::before,
+  .section-nav--wheel::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+  }
+
+  .section-nav--wheel::before {
+    right: calc(100% + 0.25rem);
+    border-block: 0.4rem solid transparent;
+    border-left: 0.5rem solid #245b38;
+    transform: translateY(-50%);
+  }
+
+  .section-nav--wheel::after {
+    left: 50%;
+    width: 2.25rem;
+    aspect-ratio: 1;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--surface);
+    transform: translate(-50%, -50%);
+  }
+
+  .section-nav--wheel ul {
+    position: relative;
+    display: block;
+    aspect-ratio: 1;
+    overflow: hidden;
+    border: 1px solid var(--border);
+    border-radius: 50%;
+    background: var(--border);
+    transform: rotate(var(--wheel-angle));
+    transition: var(--wheel-transition);
+  }
+
+  .section-nav--wheel li,
+  .section-nav--wheel a,
+  .section-nav--wheel a::before {
+    position: absolute;
+    inset: 0;
+  }
+
+  .section-nav--wheel li {
+    pointer-events: none;
+    transform: rotate(var(--segment-angle));
+  }
+
+  .section-nav--wheel a {
+    padding: 0;
+  }
+
+  .section-nav--wheel a::before {
+    content: "";
+    pointer-events: auto;
+    background: var(--tinted-surface);
+    clip-path: polygon(50% 50%, 0 22%, 0 78%);
+  }
+
+  .section-nav--wheel a:hover::before {
+    background: #dcebdc;
+  }
+
+  .section-nav--wheel a[aria-current="location"] {
+    color: #fff;
+  }
+
+  .section-nav--wheel a[aria-current="location"]::before {
+    background: #245b38;
+  }
+
+  .section-nav--wheel a span {
+    position: absolute;
+    top: 50%;
+    left: 15%;
+    width: 3.3rem;
+    padding-block: 0.15rem;
+    font-size: 0.6875rem;
+    font-weight: 650;
+    line-height: 1.1;
+    text-align: center;
+    /* Counter both rotations so labels stay upright as the wheel turns. */
+    transform: translate(-50%, -50%) rotate(calc(0deg - var(--segment-angle) - var(--wheel-angle)));
+    transition: var(--wheel-transition);
+    will-change: transform;
+  }
+
+  .section-nav--wheel a:focus-visible span {
+    outline: 2px solid currentColor;
+    border-radius: 0.25rem;
+  }
+
+  @media (forced-colors: active) {
+    .section-nav--wheel {
+      --border: CanvasText;
+    }
+
+    .section-nav--wheel::before {
+      forced-color-adjust: none;
+      border-left-color: Highlight;
+    }
+
+    .section-nav--wheel a[aria-current="location"] {
+      color: HighlightText;
+    }
+
+    .section-nav--wheel a[aria-current="location"]::before {
+      background: Highlight;
+    }
+
+    .section-nav--wheel a[aria-current="location"] span {
+      forced-color-adjust: none;
+    }
+  }
+
   .project-cards {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .section-nav--wheel {
+    --wheel-transition: none;
   }
 }
